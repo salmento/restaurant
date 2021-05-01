@@ -1,6 +1,8 @@
 import mongodb from 'mongodb';
 import dotenv from 'dotenv';
 // eslint-disable-next-line import/extensions
+import RestaurantsDao from './api/dao/restaurantsDao.js';
+// eslint-disable-next-line import/extensions
 import app from './server.js';
 
 dotenv.config();
