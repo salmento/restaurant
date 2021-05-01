@@ -1,0 +1,42 @@
+{
+  "name": "restaurante",
+  "version": "1.0.0",
+  "description": "small restaurant template using node js ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmento/restaurant.git"
+  },
+  "keywords": [
+    "Restaurant",
+    "mern",
+    "express",
+    "mongodb",
+    "reactjs"
+  ],
+  "author": "Salmento Chitlango",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/salmento/restaurant/issues"
+  },
+  "homepage": "https://github.com/salmento/restaurant#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
+}
