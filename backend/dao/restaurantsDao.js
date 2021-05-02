@@ -1,3 +1,7 @@
+import mongodb from 'mongodb';
+
+const ObjectId = mongodb.ObjectID;
+
 let restaurants;
 
 export default class RestaurantsDao {
@@ -52,6 +56,60 @@ export default class RestaurantsDao {
         `Unable to convert cursor to array or problem counting documents, ${e}`,
       );
       return { restaurantsList: [], totalNumRestaurants: 0 };
+    }
+  }
+
+  static async getRestaurantByID(id) {
+    // eslint-disable-next-line no-useless-catch
+    try {
+      const pipeline = [
+        {
+          $match: {
+            _id: new ObjectId(id),
+          },
+        },
+        {
+          $lookup: {
+            from: 'reviews',
+            let: {
+              id: '$_id',
+            },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $eq: ['$restaurant_id', '$$id'],
+                  },
+                },
+              },
+              {
+                $sort: {
+                  date: -1,
+                },
+              },
+            ],
+            as: 'reviews',
+          },
+        },
+        {
+          $addFields: {
+            reviews: '$reviews',
+          },
+        },
+      ];
+      return await restaurants.aggregate(pipeline).next();
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  static async getCuisines() {
+    let cuisines = [];
+    try {
+      cuisines = await restaurants.distinct('cuisine');
+      return cuisines;
+    } catch (e) {
+      return cuisines;
     }
   }
 }

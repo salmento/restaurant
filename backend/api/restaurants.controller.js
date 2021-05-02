@@ -42,8 +42,6 @@ export default class RestaurantsController {
       }
       res.json(restaurant);
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(`api, ${e}`);
       res.status(500).json({ error: e });
     }
   }
@@ -53,8 +51,6 @@ export default class RestaurantsController {
       const cuisines = await RestaurantsDAO.getCuisines();
       res.json(cuisines);
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(`api, ${e}`);
       res.status(500).json({ error: e });
     }
   }
