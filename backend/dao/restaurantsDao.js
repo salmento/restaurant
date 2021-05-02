@@ -7,7 +7,7 @@ export default class RestaurantsDao {
     }
 
     try {
-      restaurants = await conn.db(process.env.RESTRIVIES).collections('restaurants');
+      restaurants = await conn.db(process.env.RESTRIVIES).collection('restaurants');
     } catch (e) {
       throw new Error(`Unable to establish a restaurant handle in restaurantsDao: ${e}`);
     }
